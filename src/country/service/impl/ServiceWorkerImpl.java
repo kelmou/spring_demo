@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class ServiceWorkerImpl implements IServiceWorker {
 	@Autowired
 	private CountryDAO countryDAO;
+<<<<<<< HEAD
 	@Autowired
 	private ApplicationContext applicationContext;
 	
@@ -23,5 +24,25 @@ public class ServiceWorkerImpl implements IServiceWorker {
 		
 		System.out.println("WELCOME : " + countryService.welcome());
 		System.out.println("Devise is :" + countryService.devise());
+=======
+
+	@Override
+	public void InsertCountry(String country) {
+		// TODO Auto-generated method stub
+		String[] l=country.split(",");
+		Country country2=new Country();
+		country2.setCode(l[0]);
+		country2.setDevise(l[2]);
+		country2.setGreetings(l[3]);
+		country2.setName(l[1]);
+		countryDAO.saveCountry(country2);
+	}
+
+	@Override
+	public void listCountry() {
+		// TODO Auto-generated method stub
+		countryDAO.listCountry();
+		
+>>>>>>> origin/aspect-fonctionnel-01
 	}
 }
