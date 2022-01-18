@@ -35,7 +35,6 @@ public class App {
 			}
 			else if(choix==1)
 			{
-
 				System.out.println("Ajouter un pays comme cet exemple (FR,france,EURO,Bonjour!) : ");
 				Scanner inputFromConsole1 = new Scanner(System.in);
 				String pays = inputFromConsole1.next();
@@ -48,6 +47,15 @@ public class App {
 				Scanner inputFromConsole1 = new Scanner(System.in);
 				String code = inputFromConsole1.next();
 				serviceWorker.findByCode(code);
+			}
+			else if(choix==3)
+			{
+				
+					System.out.println("S'il vous plait tapper votre code : ");
+					Scanner inputFromConsole1 = new Scanner(System.in);
+					String code = inputFromConsole1.next();
+					serviceWorker.deleteByCode(code);
+				
 			}
 			else
 			{

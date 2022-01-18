@@ -35,6 +35,9 @@ public class ServiceWorkerImpl implements IServiceWorker {
 		countryDAO.findByCode(code);
 	}
 
-
-
+	@Override
+	public void deleteByCode(String code) {
+		// TODO Auto-generated method stub
+		countryDAO.deleteByCode(code);
+	}
 }

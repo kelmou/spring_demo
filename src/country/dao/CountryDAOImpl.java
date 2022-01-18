@@ -51,7 +51,7 @@ public class CountryDAOImpl extends Dao implements CountryDAO {
 		   trans = session.beginTransaction();
 		   @SuppressWarnings("unchecked")
 		   List countries = session.createQuery("FROM Country where code=:countrycode").setParameter("countrycode", code).list();
-		for (Iterator iterator =countries.iterator(); iterator.hasNext();){
+		   for (Iterator iterator =countries.iterator(); iterator.hasNext();){
 			Country country = (Country) iterator.next();
 			System.out.print(" Name: " + country.getName());
 			System.out.print(" ,Devise: " + country.getDevise());
@@ -60,6 +60,19 @@ public class CountryDAOImpl extends Dao implements CountryDAO {
 			}
 		   trans.commit();
 		   session.close();
-}
+  }
+	@Override
+	public void deleteByCode(String code)
+	{
+		Session session = getSession();
+		trans = session.beginTransaction();
+		int query = session.createSQLQuery("delete from Country where code = :code").setParameter("code", code).executeUpdate();
+		if(query>0)
+			System.out.println("Pays avec le code  :"+code+" est supprimé");
+		else
+			System.out.println("Pays avec le code  :"+code+" non existe");
+		trans.commit();
+		session.close();
+	}
 	
 }
