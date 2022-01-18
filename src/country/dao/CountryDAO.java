@@ -7,4 +7,5 @@ public interface CountryDAO {
    void listCountry();
    void findByCode(String code);
    void deleteByCode(String code);
+   void updateByCode(String code,Country c);
 }

@@ -74,5 +74,24 @@ public class CountryDAOImpl extends Dao implements CountryDAO {
 		trans.commit();
 		session.close();
 	}
+	@Override
+	public void updateByCode(String code, Country c) {
+		// TODO Auto-generated method stub
+		Session session = getSession();
+		trans = session.beginTransaction();
+		int query = session.createSQLQuery(
+				"UPDATE Country SET name = :name ,devise =:devise ,greetings=:greetings  WHERE code = :code").setParameter("code", code).setParameter("name", c.getName()).setParameter("devise", c.getDevise()).setParameter("greetings", c.getGreetings()).executeUpdate();
+		trans.commit();
+		session.close();
+		if(query>0)
+		{
+			System.out.println("Pays avec le code  :"+code+" est modifié");
+			System.out.println("Nouvelle Modification");
+			findByCode(code);
+		}
+		else
+			System.out.println("Pays avec le code  :"+code+" non existe");
+	
+	}
 	
 }

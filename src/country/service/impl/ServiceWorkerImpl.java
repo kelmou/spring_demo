@@ -40,4 +40,9 @@ public class ServiceWorkerImpl implements IServiceWorker {
 		// TODO Auto-generated method stub
 		countryDAO.deleteByCode(code);
 	}
+	@Override
+	public void updateByCode(String code, Country c) {
+		// TODO Auto-generated method stub
+		countryDAO.updateByCode(code,c);
+	}
 }

@@ -1,5 +1,6 @@
 package country.app;
 
+import country.model.Country;
 import country.service.IServiceWorker;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -38,7 +39,7 @@ public class App {
 				System.out.println("Ajouter un pays comme cet exemple (FR,france,EURO,Bonjour!) : ");
 				Scanner inputFromConsole1 = new Scanner(System.in);
 				String pays = inputFromConsole1.next();
-				serviceWorker.InsertCountry(pays);
+				serviceWorker.InsertCountry(pays);	
 				serviceWorker.listCountry();
 			}
 			else if(choix==2)
@@ -57,11 +58,31 @@ public class App {
 					serviceWorker.deleteByCode(code);
 				
 			}
+			else if(choix==4)
+			{
+				System.out.println("S'il vous plait tapper votre code : ");
+				Scanner inputFromConsole1 = new Scanner(System.in);
+				String code = inputFromConsole1.next();
+				System.out.println("Tapper Nouveau Nom: ");
+				Scanner nom = new Scanner(System.in);
+				String nnom = inputFromConsole1.next();
+				System.out.println("Tapper Nouveau devise: ");
+				Scanner devise = new Scanner(System.in);
+				String ndevise = inputFromConsole1.next();
+				System.out.println("Tapper Nouveau greetings: ");
+				Scanner greetings = new Scanner(System.in);
+				String ngreetings = inputFromConsole1.next();
+				Country country=new Country();
+				country.setName(nnom);
+				country.setDevise(ndevise);
+				country.setGreetings(ngreetings);
+				serviceWorker.updateByCode(code,country);
+				
+			}
 			else
 			{
 				System.out.print("ce choix n'existe pas maintenant ");
 			}
-
 		}
 	}
 	
