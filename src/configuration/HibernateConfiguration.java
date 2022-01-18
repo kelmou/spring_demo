@@ -26,9 +26,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 			sessionFactory.setDataSource(dataSource());
 			sessionFactory.setPackagesToScan(new String [] {"country.model"} );
 			sessionFactory.setHibernateProperties(hibernateProperties());
-			
-			return sessionFactory;
-			
+			return sessionFactory;	
 		}
 		
 		
