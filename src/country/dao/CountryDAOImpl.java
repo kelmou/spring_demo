@@ -1,19 +1,18 @@
 package country.dao;
 
 import country.model.Country;
-
+import continent.model.Continent;
 import java.util.Iterator;
 import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 
 @Repository("countryDao")
 public class CountryDAOImpl extends Dao implements CountryDAO {
 
-	
 	@SuppressWarnings("unused")
 	private Transaction trans;
 	@Override
@@ -25,6 +24,7 @@ public class CountryDAOImpl extends Dao implements CountryDAO {
 		   trans.commit();
 		   session.close();
 	}
+	
 	@Override
 	public void listCountry() {
 		// TODO Auto-generated method stub
@@ -61,6 +61,7 @@ public class CountryDAOImpl extends Dao implements CountryDAO {
 		   trans.commit();
 		   session.close();
   }
+	
 	@Override
 	public void deleteByCode(String code)
 	{
@@ -74,6 +75,7 @@ public class CountryDAOImpl extends Dao implements CountryDAO {
 		trans.commit();
 		session.close();
 	}
+	
 	@Override
 	public void updateByCode(String code, Country c) {
 		// TODO Auto-generated method stub
@@ -87,11 +89,32 @@ public class CountryDAOImpl extends Dao implements CountryDAO {
 		{
 			System.out.println("Pays avec le code  :"+code+" est modifié");
 			System.out.println("Nouvelle Modification");
-			findByCode(code);
-		}
+	        findByCode(code);
+	        }
 		else
 			System.out.println("Pays avec le code  :"+code+" non existe");
+	}
 	
+	@Override
+	public void getCountriesofContinent(String continentcode) {
+		// TODO Auto-generated method stub
+		List<Country>contries=null;
+		Session session = getSession();
+		trans = session.beginTransaction();
+		Query<Continent>query= session.createQuery("from Continent where code= :code");
+		query.setParameter("code", continentcode);
+		  contries=query.uniqueResult().getCountry();
+		for (Iterator iterator =contries.iterator(); iterator.hasNext();){
+				Country country = (Country) iterator.next();
+				System.out.print(" Name: " + country.getName());
+				System.out.print(" ,Devise: " + country.getDevise());
+				System.out.print(" ,Greetings: " + country.getGreetings());
+				System.out.println(",Code: " + country.getCode());
+		}
+		
+	   trans.commit();
+	   session.close();
+		
 	}
 	
 }

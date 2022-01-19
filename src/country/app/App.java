@@ -51,12 +51,11 @@ public class App {
 			}
 			else if(choix==3)
 			{
-				
 					System.out.println("S'il vous plait tapper votre code : ");
 					Scanner inputFromConsole1 = new Scanner(System.in);
 					String code = inputFromConsole1.next();
 					serviceWorker.deleteByCode(code);
-				
+
 			}
 			else if(choix==4)
 			{
@@ -78,6 +77,13 @@ public class App {
 				country.setGreetings(ngreetings);
 				serviceWorker.updateByCode(code,country);
 				
+			}
+			else if(choix==5)
+			{
+				System.out.println("entrer le code de contienent pays  : ");
+				Scanner inputFromConsole1 = new Scanner(System.in);
+				String codecontinent = inputFromConsole1.next();
+				serviceWorker.getCountriesofContinent(codecontinent);
 			}
 			else
 			{

@@ -45,4 +45,10 @@ public class ServiceWorkerImpl implements IServiceWorker {
 		// TODO Auto-generated method stub
 		countryDAO.updateByCode(code,c);
 	}
+
+	@Override
+	public void getCountriesofContinent(String continentcode) {
+		// TODO Auto-generated method stub
+		countryDAO.getCountriesofContinent(continentcode);
+	}
 }
