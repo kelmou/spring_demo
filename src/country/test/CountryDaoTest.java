@@ -64,8 +64,14 @@ public class CountryDaoTest   {
 		 assertEquals(countryDao.deleteByCode("ma"),true);
 	 }
 	 @Test
-	 public void updateByCodeTest()
+	 public void updatebyCodeTest()
 	 {
+		 Country country=new Country();
+		 country.setCode("es");
+		 country.setDevise("EURO");
+		 country.setGreetings("Hola Maroc");
+		 country.setName("Spain");
+		 assertEquals(countryDao.updateByCode("es", country),true);
 	 }
 	 @Test
 	  public void getCountriesofContinentTest()
