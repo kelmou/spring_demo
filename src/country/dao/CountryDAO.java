@@ -1,12 +1,15 @@
 package country.dao;
 
+import java.util.List;
+
+import continent.model.Continent;
 import country.model.Country;
 
 public interface CountryDAO {
-   void saveCountry(Country country);
-   void listCountry();
-   void findByCode(String code);
-   void deleteByCode(String code);
-   void updateByCode(String code,Country c);
-   void getCountriesofContinent(String continentcode);
+   boolean saveCountry(Country country);
+   List<Country> listCountry();
+   Country findByCode(String code);
+   boolean deleteByCode(String code);
+   boolean updateByCode(String code,Country c);
+   List<Country> getCountriesofContinent(String continentcode);
 }
