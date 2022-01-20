@@ -39,7 +39,7 @@ public class App {
 				System.out.println("Ajouter un pays comme cet exemple (FR,france,EURO,Bonjour!) : ");
 				Scanner inputFromConsole1 = new Scanner(System.in);
 				String pays = inputFromConsole1.next();
-				serviceWorker.InsertCountry(pays);	
+				serviceWorker.InsertCountry(pays);
 			}
 			else if(choix==2)
 			{
@@ -51,7 +51,6 @@ public class App {
 				System.out.print(" ,Devise: " + country.getDevise());
 				System.out.print(" ,Greetings: " + country.getGreetings());
 				System.out.println(",Code: " + country.getCode());
-
 			}
 			else if(choix==3)
 			{
@@ -80,10 +79,18 @@ public class App {
 				country.setGreetings(ngreetings);
 				serviceWorker.updateByCode(code,country);
 			}
+			else if(choix==5)
+			{
+				System.out.println("entrer le code de contienent pays  : ");
+				Scanner inputFromConsole1 = new Scanner(System.in);
+				String codecontinent = inputFromConsole1.next();
+				serviceWorker.findByCodeContinent(codecontinent);
+			}
 			else
 			{
 				System.out.print("ce choix n'existe pas maintenant ");
 			}
+
 		}
 	}
 	

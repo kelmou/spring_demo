@@ -71,5 +71,14 @@ public class CountryDaoTest   {
 		 country.setName("Spain");
 		 assertEquals(countryDao.updateByCode("es", country),true);
 	 }
-	 
+	 @Test
+	  public void getCountriesofContinentTest()
+	  {
+		List<Country>contriesOfEurope=new ArrayList<Country>();
+		contriesOfEurope.add(countryDao.findByCode("fr"));
+	    contriesOfEurope.add(countryDao.findByCode("es"));
+	    contriesOfEurope.add(countryDao.findByCode("en"));
+		contriesOfEurope.add(countryDao.findByCode("de"));
+		assertEquals(contriesOfEurope,countryDao.getCountriesofContinent("EU"));
+	  }
 }

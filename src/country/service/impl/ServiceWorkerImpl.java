@@ -1,10 +1,11 @@
 package country.service.impl;
 
-
 import country.dao.CountryDAO;
 import country.model.Country;
 import country.service.IServiceWorker;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceWorkerImpl implements IServiceWorker {
+	
 	@Autowired
 	private CountryDAO countryDAO;
 	
@@ -53,14 +55,29 @@ public class ServiceWorkerImpl implements IServiceWorker {
 	@Override
 	public void updateByCode(String code, Country c) {
 		// TODO Auto-generated method stub
+		
 		if(countryDAO.updateByCode(code,c)==true)
 		{
 			System.out.println("Pays avec le code  :"+code+" est modifié");
 			System.out.println("Nouvelle Modification");
-			findByCode(code);
-		}
+	        findByCode(code);
+	        }
 		else
 			System.out.println("Pays avec le code  :"+code+" non existe");
-		
+	}
+
+	@Override
+	public void findByCodeContinent(String continentcode) {
+		// TODO Auto-generated method stub
+		List<Country> contries=new ArrayList<Country>();
+		contries=countryDAO.getCountriesofContinent(continentcode);
+		for (Iterator iterator =contries.iterator(); iterator.hasNext();){
+			Country country = (Country) iterator.next();
+			System.out.print(" Name: " + country.getName());
+			System.out.print(" ,Devise: " + country.getDevise());
+			System.out.print(" ,Greetings: " + country.getGreetings());
+			System.out.println(",Code: " + country.getCode());
+	}
+	
 	}
 }

@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import continent.model.Continent;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -24,5 +26,9 @@ public class Country {
 	private String devise;
 	@Column(name ="greetings")
 	private String greetings;
+
+    @ManyToOne
+    @JoinColumn(name="CountinentId")
+	private Continent continent;
 
 }

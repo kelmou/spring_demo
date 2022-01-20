@@ -1,18 +1,15 @@
 package country.dao;
 
 import country.model.Country;
-
+import continent.model.Continent;
 import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
-
 @Repository("countryDao")
 public class CountryDAOImpl extends Dao implements CountryDAO {
 
-	
 	@SuppressWarnings("unused")
 	private Transaction trans;
 	@Override
@@ -74,6 +71,7 @@ public class CountryDAOImpl extends Dao implements CountryDAO {
 		else
 			return false;
 	}
+	
 	@Override
 	public boolean updateByCode(String code, Country c) {
 		// TODO Auto-generated method stub
@@ -84,12 +82,21 @@ public class CountryDAOImpl extends Dao implements CountryDAO {
 		trans.commit();
 		session.close();
 		if(query>0)
-		{
 			return true;
-		}
 		else
-		return false;
+			return false;
+	}
 	
+	@Override
+	public List<Country> getCountriesofContinent(String continentcode) {
+		// TODO Auto-generated method stub
+		Session session = getSession();
+		trans = session.beginTransaction();
+		Continent c= (Continent) session.createQuery("from Continent where code= :code").setParameter("code", continentcode).uniqueResult();
+	    List<Country>contries=c.getCountry();
+	   trans.commit();
+	   session.close();
+		return contries;
 	}
 	
 }
