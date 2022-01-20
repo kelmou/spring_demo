@@ -10,5 +10,5 @@ public interface IServiceWorker {
 	void InsertCountry(String country);
 	Country findByCode(String code);
     void deleteByCode(String code);
-	 void updateByCode(String code,Country c);
+	void updateByCode(String code,Country c);
 }

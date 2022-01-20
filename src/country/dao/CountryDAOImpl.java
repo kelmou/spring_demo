@@ -2,7 +2,6 @@ package country.dao;
 
 import country.model.Country;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Session;
