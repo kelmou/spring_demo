@@ -39,7 +39,6 @@ public class App {
 				Scanner inputFromConsole1 = new Scanner(System.in);
 				String pays = inputFromConsole1.next();
 				serviceWorker.InsertCountry(pays);
-				serviceWorker.listCountry();
 			}
 			else if(choix==2)
 			{

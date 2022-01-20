@@ -1,8 +1,11 @@
 package country.service;
+import java.util.*;
 
+import country.model.Country;
 public interface IServiceWorker {
-	void listCountry();
+
+	List<Country>listCountry();
 	void InsertCountry(String country);
-	void findByCode(String code);
-	 void deleteByCode(String code);
+	Country findByCode(String code);
+    void deleteByCode(String code);
 }
