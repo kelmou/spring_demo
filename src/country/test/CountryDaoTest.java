@@ -1,6 +1,5 @@
 package country.test;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
 import configuration.AppConfig;
-import continent.model.Continent;
 import country.dao.CountryDAO;
 import country.model.Country;
 

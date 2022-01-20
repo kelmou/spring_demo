@@ -25,12 +25,14 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 public class Continent {
-	
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String name;
+	
 	private String code;
+	
 	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name="CountinentId")
     private List<Country> country=new ArrayList<Country>();

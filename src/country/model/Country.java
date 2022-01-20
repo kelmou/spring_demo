@@ -11,7 +11,6 @@ import javax.persistence.ManyToOne;
 import continent.model.Continent;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 @Data
@@ -32,6 +31,5 @@ public class Country {
     @ManyToOne
     @JoinColumn(name="CountinentId")
 	private Continent continent;
-
 
 }

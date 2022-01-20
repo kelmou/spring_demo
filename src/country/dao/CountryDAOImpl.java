@@ -3,15 +3,11 @@ package country.dao;
 import country.model.Country;
 import continent.model.Continent;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-
-
 
 @Repository("countryDao")
 public class CountryDAOImpl extends Dao implements CountryDAO {
