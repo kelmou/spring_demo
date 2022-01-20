@@ -54,7 +54,6 @@ public class App {
 			}
 			else if(choix==3)
 			{
-				
 					System.out.println("S'il vous plait tapper votre code : ");
 					Scanner inputFromConsole1 = new Scanner(System.in);
 					String code = inputFromConsole1.next();
