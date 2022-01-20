@@ -1,5 +1,6 @@
 package country.app;
 
+import country.model.Country;
 import country.service.IServiceWorker;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -45,7 +46,11 @@ public class App {
 				System.out.println("S'il vous plait tapper votre code : ");
 				Scanner inputFromConsole1 = new Scanner(System.in);
 				String code = inputFromConsole1.next();
-				serviceWorker.findByCode(code);
+				Country country=serviceWorker.findByCode(code);
+				System.out.print(" Name: " + country.getName());
+				System.out.print(" ,Devise: " + country.getDevise());
+				System.out.print(" ,Greetings: " + country.getGreetings());
+				System.out.println(",Code: " + country.getCode());
 			}
 			else if(choix==3)
 			{
