@@ -6,7 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
+@Data
+@NoArgsConstructor
 public class Country {
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
@@ -19,29 +24,5 @@ public class Country {
 	private String devise;
 	@Column(name ="greetings")
 	private String greetings;
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getCode() {
-		return code;
-	}
-	public void setCode(String code) {
-		this.code = code;
-	}
-	public String getDevise() {
-		return devise;
-	}
-	public void setDevise(String devise) {
-		this.devise = devise;
-	}
-	public String getGreetings() {
-		return greetings;
-	}
-	public void setGreetings(String greetings) {
-		this.greetings = greetings;
-	}
 
 }
