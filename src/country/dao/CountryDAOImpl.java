@@ -5,6 +5,8 @@ import country.model.Country;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
@@ -17,49 +19,51 @@ public class CountryDAOImpl extends Dao implements CountryDAO {
 	@SuppressWarnings("unused")
 	private Transaction trans;
 	@Override
-	public void saveCountry(Country country) {
+	public boolean saveCountry(Country country) {
 		// TODO Auto-generated method stub
 		Session session=getSession();
 		   Transaction trans=session.beginTransaction();
-		   session.save(country);
-		   trans.commit();
-		   session.close();
-	}
-	@Override
-	public void listCountry() {
-		// TODO Auto-generated method stub
+		   try {
+			   session.save(country);
+			   trans.commit();
+			   session.close();
+			   return true;
+		   }catch(Exception e){
+			   System.out.print(e.getMessage());
 
-			Session session=getSession();
-		   trans = session.beginTransaction();
-		   @SuppressWarnings("unchecked")
-		List<Country> countries = session.createQuery("FROM Country").list();
-		   for (Iterator iterator =countries.iterator(); iterator.hasNext();){
-			Country country = (Country) iterator.next();
-			System.out.print(" Name: " + country.getName());
-			System.out.print(" ,Devise: " + country.getDevise());
-			System.out.print(" ,Greetings: " + country.getGreetings());
-			System.out.println(",Code: " + country.getCode());
-			}
-		   trans.commit();
-		   session.close();
+		   }
+		   return false;
 	}
-	
+
 	@Override
-	public void findByCode(String code) {
+	public Country findByCode(String code) {
 		// TODO Auto-generated method stub
 		Session session=getSession();
 		   trans = session.beginTransaction();
-		   @SuppressWarnings("unchecked")
-		   List countries = session.createQuery("FROM Country where code=:countrycode").setParameter("countrycode", code).list();
-		for (Iterator iterator =countries.iterator(); iterator.hasNext();){
-			Country country = (Country) iterator.next();
-			System.out.print(" Name: " + country.getName());
-			System.out.print(" ,Devise: " + country.getDevise());
-			System.out.print(" ,Greetings: " + country.getGreetings());
-			System.out.println(",Code: " + country.getCode());
-			}
+		   Country countries=new Country();
+		  try {
+			   countries = (Country) session.createQuery("FROM Country where code=:countrycode").setParameter("countrycode", code).uniqueResult();
+		  }
+		  catch(Exception e)
+		  {
+			  System.out.print(e.getMessage());
+		  }
 		   trans.commit();
 		   session.close();
-}
+		   return countries;
+    }
+	
+	@Override
+	public List<Country> listCountry() {
+		// TODO Auto-generated method stub
+		Session session=getSession();
+		   trans = session.beginTransaction();
+		  @SuppressWarnings("unchecked")
+		   List<Country> countries =  session.createQuery("FROM Country").list();
+		   trans.commit();
+		   session.close();
+		   return countries;
+	}
+
 	
 }

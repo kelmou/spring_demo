@@ -1,9 +1,11 @@
 package country.dao;
 
+import java.util.List;
+
 import country.model.Country;
 
 public interface CountryDAO {
-   void saveCountry(Country country);
-   void listCountry();
-   void findByCode(String code);
+   boolean saveCountry(Country country);
+   List<Country> listCountry();
+   Country findByCode(String code);
 }

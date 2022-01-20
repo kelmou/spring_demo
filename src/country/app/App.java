@@ -1,5 +1,6 @@
 package country.app;
 
+import country.model.Country;
 import country.service.IServiceWorker;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -7,6 +8,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import configuration.HibernateConfiguration;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 @SuppressWarnings("all")
@@ -29,7 +32,6 @@ public class App {
 			choix= inputFromConsole.nextInt();
 			if(choix==0)
 			{
-
 				System.out.print("Vous étes sorti de l'application");
 				System.exit(0);
 			}
@@ -40,14 +42,17 @@ public class App {
 				Scanner inputFromConsole1 = new Scanner(System.in);
 				String pays = inputFromConsole1.next();
 				serviceWorker.InsertCountry(pays);
-				serviceWorker.listCountry();
 			}
 			else if(choix==2)
 			{
 				System.out.println("S'il vous plait tapper votre code : ");
 				Scanner inputFromConsole1 = new Scanner(System.in);
 				String code = inputFromConsole1.next();
-				serviceWorker.findByCode(code);
+				Country country=serviceWorker.findByCode(code);
+					System.out.print(" Name: " + country.getName());
+					System.out.print(" ,Devise: " + country.getDevise());
+					System.out.print(" ,Greetings: " + country.getGreetings());
+					System.out.println(",Code: " + country.getCode());
 			}
 			else
 			{
