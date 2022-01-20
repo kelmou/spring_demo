@@ -40,23 +40,23 @@ public class App {
 				Scanner inputFromConsole1 = new Scanner(System.in);
 				String pays = inputFromConsole1.next();
 				serviceWorker.InsertCountry(pays);	
-				serviceWorker.listCountry();
 			}
 			else if(choix==2)
 			{
 				System.out.println("S'il vous plait tapper votre code : ");
 				Scanner inputFromConsole1 = new Scanner(System.in);
 				String code = inputFromConsole1.next();
-				serviceWorker.findByCode(code);
+				Country country=serviceWorker.findByCode(code);
+				System.out.print("Nom"+country.getName());
+				
+				
 			}
 			else if(choix==3)
 			{
-				
 					System.out.println("S'il vous plait tapper votre code : ");
 					Scanner inputFromConsole1 = new Scanner(System.in);
 					String code = inputFromConsole1.next();
 					serviceWorker.deleteByCode(code);
-				
 			}
 			else if(choix==4)
 			{
@@ -77,7 +77,6 @@ public class App {
 				country.setDevise(ndevise);
 				country.setGreetings(ngreetings);
 				serviceWorker.updateByCode(code,country);
-				
 			}
 			else
 			{
