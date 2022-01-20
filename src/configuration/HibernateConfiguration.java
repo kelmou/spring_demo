@@ -17,18 +17,17 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan({ "configuration" })
-	public class HibernateConfiguration
-	{
+public class HibernateConfiguration
+{
 		@Bean
 		public static LocalSessionFactoryBean sessionFactory()
 		{
 			LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 			sessionFactory.setDataSource(dataSource());
-			sessionFactory.setPackagesToScan(new String [] {"country.model"} );
+			sessionFactory.setPackagesToScan(new String [] {"country.model","continent.model"} );
 			sessionFactory.setHibernateProperties(hibernateProperties());
 			return sessionFactory;	
 		}
-		
 		
 		@Bean
 		public static DataSource dataSource()
@@ -60,4 +59,4 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 			txManager.setSessionFactory(s);
 			return txManager;
 		}
-	}	
+}	
