@@ -2,7 +2,6 @@ package country.dao;
 
 import java.util.List;
 
-import continent.model.Continent;
 import country.model.Country;
 
 public interface CountryDAO {
