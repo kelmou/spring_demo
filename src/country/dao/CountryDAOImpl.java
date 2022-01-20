@@ -2,10 +2,8 @@ package country.dao;
 
 import country.model.Country;
 
-import java.util.Iterator;
 import java.util.List;
 
-import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
