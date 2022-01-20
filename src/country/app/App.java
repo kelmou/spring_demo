@@ -47,9 +47,11 @@ public class App {
 				Scanner inputFromConsole1 = new Scanner(System.in);
 				String code = inputFromConsole1.next();
 				Country country=serviceWorker.findByCode(code);
-				System.out.print("Nom"+country.getName());
-				
-				
+				System.out.print(" Name: " + country.getName());
+				System.out.print(" ,Devise: " + country.getDevise());
+				System.out.print(" ,Greetings: " + country.getGreetings());
+				System.out.println(",Code: " + country.getCode());
+
 			}
 			else if(choix==3)
 			{
