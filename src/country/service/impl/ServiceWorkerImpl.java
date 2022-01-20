@@ -35,9 +35,4 @@ public class ServiceWorkerImpl implements IServiceWorker {
 			return countryDAO.listCountry();	
 	}
 
-	@Override
-	public Country findByCode(String code) {
-		// TODO Auto-generated method stub
-			return countryDAO.findByCode(code);
-	}
 }

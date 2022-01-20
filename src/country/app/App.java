@@ -43,17 +43,6 @@ public class App {
 				String pays = inputFromConsole1.next();
 				serviceWorker.InsertCountry(pays);
 			}
-			else if(choix==2)
-			{
-				System.out.println("S'il vous plait tapper votre code : ");
-				Scanner inputFromConsole1 = new Scanner(System.in);
-				String code = inputFromConsole1.next();
-				Country country=serviceWorker.findByCode(code);
-					System.out.print(" Name: " + country.getName());
-					System.out.print(" ,Devise: " + country.getDevise());
-					System.out.print(" ,Greetings: " + country.getGreetings());
-					System.out.println(",Code: " + country.getCode());
-			}
 			else
 			{
 				System.out.print("ce choix n'existe pas maintenant ");

@@ -7,5 +7,4 @@ import country.model.Country;
 public interface IServiceWorker {
 	List<Country>listCountry();
 	void InsertCountry(String country);
-	Country findByCode(String code);
 }

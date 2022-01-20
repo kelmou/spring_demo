@@ -43,19 +43,4 @@ public class CountryDaoTest   {
 		 country.setName("Maroc");
 		 assertEquals(countryDao.saveCountry(country),true);
 	 }
-	 @Test
-	 public void findByCodeTest()
-	 { 
-		 Country country=new Country();
-		 country.setCode("fr");
-		 country.setDevise("EURO");
-		 country.setGreetings("Bonjour");
-		 country.setName("France");
-		 
-		 assertEquals(countryDao.findByCode("fr").getCode(),country.getCode());
-		 assertEquals(countryDao.findByCode("fr").getDevise(),country.getDevise());
-		 assertEquals(countryDao.findByCode("fr").getName(),country.getName());
-		 assertEquals(countryDao.findByCode("fr").getGreetings(),country.getGreetings());
-	
-	 } 
 }
